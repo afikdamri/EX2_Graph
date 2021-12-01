@@ -1,6 +1,15 @@
-import java.util.List;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphAlgorithms{
+    myDirectedWeightedGraph graph;
+
     @Override
     public void init(DirectedWeightedGraph g) {
     }
@@ -48,6 +57,25 @@ public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphA
 
     @Override
     public boolean load(String file) {
-        return false;
+        try {
+            FileReader fr = new FileReader("data/G1.json");
+            GsonBuilder builder = new GsonBuilder();
+            builder.registerTypeAdapter(myDirectedWeightedGraph.class, new deserialize());
+            Gson gson = builder.setPrettyPrinting().create();
+
+            Reader reader = Files.newBufferedReader(Paths.get(file));
+            graph = gson.fromJson(reader, myDirectedWeightedGraph.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;}
+
+    @Override
+    public String toString() {
+        return "myDirectedWeightedGraphAlgorithms{" +
+                "graph=" + graph +
+                '}';
     }
 }

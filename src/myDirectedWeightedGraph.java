@@ -4,19 +4,28 @@ import java.util.Iterator;
 public class myDirectedWeightedGraph implements DirectedWeightedGraph {
     static int edgeSize;
     static int nodeSize;
-    HashMap<Integer,NodeData> graph =new HashMap<>();
-    HashMap<Integer, HashMap<Integer, EdgeData>> gi = new HashMap<>();
+    HashMap<Integer,NodeData> nodes;
+    HashMap<Integer,EdgeData> edge;
 
+    public myDirectedWeightedGraph() {
+        this.nodes = new HashMap<>();
+        this.edge = new HashMap<>();
+    }
 
+    public void MapEdgesToNodes() {
+        try {
+            for (EdgeData edge : this.edge.values()) {
+                ((myNodeData) nodes.get(edge.getSrc())).EdgesOut.put(edge.getDest(), edge);
+                ((myNodeData) nodes.get(edge.getDest())).EdgesIn.put(edge.getSrc(), edge);
+            }
+        } catch (Exception e) {
+            System.out.println("The graph might not initialized");
+        }
+    }
 
     @Override
     public NodeData getNode(int key) {
-        NodeData node = graph.get(key);
-        if (node == null)
-        {
-        return null;
-        }
-        return node;
+        return this.nodes.get(key);
     }
 
     @Override
@@ -26,9 +35,8 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
 
     @Override
     public void addNode(NodeData n){
-        if (!graph.containsKey(n.getKey())){
-            graph.put(n.getKey(),n);
-            gi.put(n.getKey(),new HashMap<>());
+        if (!nodes.containsKey(n.getKey())){
+            nodes.put(n.getKey(),n);
             nodeSize++;
         }
 
@@ -78,5 +86,13 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
     @Override
     public int getMC() {
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return "myDirectedWeightedGraph{" +
+                "nodes=" + nodes +
+                ", edge=" + edge +
+                '}';
     }
 }
