@@ -1,10 +1,4 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * This class is the main class for Ex2 - your implementation will be tested using this class.
@@ -17,21 +11,21 @@ public class Ex2 {
      * @return
      */
     public static DirectedWeightedGraph getGrapg(String json_file) {
-        DirectedWeightedGraph ans = new myDirectedWeightedGraph();
-        try {
-            GsonBuilder builder = new GsonBuilder();
-            builder.registerTypeAdapter(myDirectedWeightedGraph.class, new deserialize());
-            Gson gson = builder.setPrettyPrinting().create();
-
-            Reader reader = Files.newBufferedReader(Paths.get(json_file));
-            ans = gson.fromJson(reader, myDirectedWeightedGraph.class);
-
-            System.out.println(ans);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return ans;
-    }
+//        DirectedWeightedGraph ans = new myDirectedWeightedGraph();
+//        try {
+//            GsonBuilder builder = new GsonBuilder();
+//            builder.registerTypeAdapter(myDirectedWeightedGraph.class, new deserialize());
+//            Gson gson = builder.setPrettyPrinting().create();
+//
+//            Reader reader = Files.newBufferedReader(Paths.get(json_file));
+//            ans = gson.fromJson(reader, myDirectedWeightedGraph.class);
+//
+//            System.out.println(ans);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return ans;
+    return null;}
     /**
      * This static function will be used to test your implementation
      * @param json_file - a json file (e.g., G1.json - G3.gson)
@@ -57,6 +51,8 @@ public class Ex2 {
     }
     public static void main(String[] args) {
         getGrapg("data//G1.json");
+        String x = "100";
+
     }
 
 }

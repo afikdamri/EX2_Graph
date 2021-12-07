@@ -1,32 +1,35 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
 public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphAlgorithms{
     myDirectedWeightedGraph graph;
 
     @Override
-    public void init(DirectedWeightedGraph g) {
+    public void init(DirectedWeightedGraph g){
+        this.graph= (myDirectedWeightedGraph) g;
     }
 
     @Override
     public DirectedWeightedGraph getGraph() {
-        return null;
+        return this.graph;
     }
 
     @Override
     public DirectedWeightedGraph copy() {
-        return null;
+        myDirectedWeightedGraph graph = new myDirectedWeightedGraph();
+        return graph;
     }
 
     @Override
     public boolean isConnected() {
-
       return true;
     }
 
@@ -60,7 +63,7 @@ public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphA
         try {
             FileReader fr = new FileReader("data/G1.json");
             GsonBuilder builder = new GsonBuilder();
-            builder.registerTypeAdapter(myDirectedWeightedGraph.class, new deserialize());
+            GsonBuilder gsonBuilder = builder.registerTypeAdapter(myDirectedWeightedGraph.class);
             Gson gson = builder.setPrettyPrinting().create();
 
             Reader reader = Files.newBufferedReader(Paths.get(file));
@@ -69,8 +72,11 @@ public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphA
         } catch (IOException e) {
             e.printStackTrace();
             return false;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        return true;}
+        return true;
+return true;}
 
     @Override
     public String toString() {

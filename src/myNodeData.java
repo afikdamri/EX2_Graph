@@ -1,8 +1,9 @@
+import java.util.HashMap;
 import java.util.Map;
 
 public class myNodeData implements NodeData{
     int key;
-    GeoLocation n;
+    myGeoLocation n;
     int tag;
     String info;
 
@@ -11,8 +12,16 @@ public class myNodeData implements NodeData{
 
     public myNodeData(int key, GeoLocation n) {
         this.key = key;
-        this.n = n;
+        this.n = (myGeoLocation) n;
+        EdgesIn = new HashMap<>();
+        EdgesOut = new HashMap<>();
     }
+
+    public myNodeData(NodeData n) {
+        this.key = n.getKey();
+        this.n =new myGeoLocation(n.getLocation().x(),n.getLocation().y(),n.getLocation().z());
+    }
+
 
     @Override
     public int getKey() {
@@ -26,7 +35,9 @@ public class myNodeData implements NodeData{
 
     @Override
     public void setLocation(GeoLocation p) {
-        this.n = p;
+        this.n.x = p.x();
+        this.n.y = p.y();
+        this.n.z = p.z();
     }
 
     @Override
