@@ -3,15 +3,14 @@ import java.util.Iterator;
 import java.util.Vector;
 
 public class myDirectedWeightedGraph implements DirectedWeightedGraph {
-     private HashMap<Integer,NodeData> nodes;
-     private HashMap<Vector<Integer>,EdgeData> edges;
-     private HashMap<Integer,frTo> edgesOfNode;
-     private int Mc;
-     int node_size;
-     int edge_size;
+    private HashMap<Integer, NodeData> nodes;
+    private HashMap<Vector<Integer>, EdgeData> edges;
+    private HashMap<Integer, frTo> edgesOfNode;
+    private int Mc;
+    int node_size;
+    int edge_size;
 
-    public myDirectedWeightedGraph()
-    {
+    public myDirectedWeightedGraph() {
         this.nodes = new HashMap<>();
         this.edges = new HashMap<>();
         this.edgesOfNode = new HashMap<>();
@@ -23,6 +22,7 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
     private class frTo {
         public HashMap<Integer, EdgeData> fromMe;
         public HashMap<Integer, EdgeData> toMe;
+
         public frTo() {
             this.fromMe = new HashMap<>();
             this.toMe = new HashMap<>();
@@ -43,29 +43,28 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
     }
 
     @Override
-    public void addNode(NodeData n){
+    public void addNode(NodeData n) {
         if (nodes.get(n.getKey()) != null) {
             throw new RuntimeException("The Node key already exists");
         }
-        nodes.put(n.getKey(),(myNodeData)n);
-        edgesOfNode.put(n.getKey(),new frTo());
+        nodes.put(n.getKey(), (myNodeData) n);
+        edgesOfNode.put(n.getKey(), new frTo());
         node_size++;
         Mc++;
     }
 
     @Override
     public void connect(int src, int dest, double w) {
-        if(nodes.get(dest) == null || this.nodes.get(src) == null)
-        {
+        if (nodes.get(dest) == null || this.nodes.get(src) == null) {
             throw new RuntimeException("The source or destination does not exist");
         }
-        myEdgeData edge = new myEdgeData(src,dest,w);
+        myEdgeData edge = new myEdgeData(src, dest, w);
         Vector<Integer> v = new Vector<>();
         v.add(src);
         v.add(dest);
-        edges.put(v,edge);
-        edgesOfNode.get(src).fromMe.put(dest,edge);
-        edgesOfNode.get(dest).toMe.put(src ,edge);
+        edges.put(v, edge);
+        edgesOfNode.get(src).fromMe.put(dest, edge);
+        edgesOfNode.get(dest).toMe.put(src, edge);
         edge_size++;
         Mc++;
     }
@@ -87,8 +86,7 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
 
     @Override
     public NodeData removeNode(int key) {
-        if (nodes.get(key)==null)
-        {
+        if (nodes.get(key) == null) {
             throw new RuntimeException("The node does not exist");
         }
         NodeData node = nodes.remove(key);
@@ -113,8 +111,7 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
 
     @Override
     public EdgeData removeEdge(int src, int dest) {
-        if (edgesOfNode.get(src) == null || edgesOfNode.get(dest) ==null)
-        {
+        if (edgesOfNode.get(src) == null || edgesOfNode.get(dest) == null) {
             throw new RuntimeException("The edge does not exist");
         }
         edgesOfNode.get(src).fromMe.remove(dest);
@@ -149,7 +146,7 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
                 '}';
     }
 
-//    private class EdgeIterator implements Iterator<EdgeData> {
+    //    private class EdgeIterator implements Iterator<EdgeData> {
 //        private int myMC;
 //        private Iterator<EdgeData> iter;
 //        private EdgeData curr;
@@ -182,40 +179,40 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
 //            removeEdge(curr.getSrc(), curr.getDest());
 //        }
 //    }
-//    private class EdgeIteratorOfNode implements Iterator<EdgeData> {
-//        private int myMC;
-//        private Iterator<EdgeData> iter;
-//        private EdgeData curr;
-//        public EdgeIteratorOfNode(int node_id) {
-//            myMC = Mc;
-//            iter = edgesOfNode.get(node_id).fromMe.values().iterator();
-//        }
-//
-//        private void isValide() {
-//            if (myMC != Mc) {
-//                throw new RuntimeException("the iterator has change!");
-//            }
-//        }
-//        @Override
-//        public boolean hasNext() {
-//            isValide();
-//            return iter.hasNext();
-//        }
-//        @Override
-//        public EdgeData next() {
-//            isValide();
-//            curr = iter.next();
-//            return curr;
-//        }
-//        @Override
-//        public void remove() {
-//            isValide();
-//            ++myMC;
-//            iter.remove();
-//            removeEdge(curr.getSrc(), curr.getDest());
-//
-//        }
-//    }
+    private class EdgeIteratorOfNode implements Iterator<EdgeData> {
+        private int myMC;
+        private Iterator<EdgeData> iter;
+        private EdgeData curr;
+        public EdgeIteratorOfNode(int node_id) {
+            myMC = Mc;
+            iter = edgesOfNode.get(node_id).fromMe.values().iterator();
+        }
+
+        private void isValide() {
+            if (myMC != Mc) {
+                throw new RuntimeException("the iterator has change!");
+            }
+        }
+        @Override
+        public boolean hasNext() {
+            isValide();
+            return iter.hasNext();
+        }
+        @Override
+        public EdgeData next() {
+            isValide();
+            curr = iter.next();
+            return curr;
+        }
+        @Override
+        public void remove() {
+            isValide();
+            ++myMC;
+            iter.remove();
+            removeEdge(curr.getSrc(), curr.getDest());
+
+        }
+    }
 //
 //    private class NodeIterator implements Iterator<NodeData> {
 //        private int myMC;
@@ -283,18 +280,13 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
     }
 
     public static void main(String[] args) {
-       myDirectedWeightedGraph graph = new myDirectedWeightedGraph();
-       graph.addNode(new myNodeData(0,new myGeoLocation(0,0,0)));
-        graph.addNode(new myNodeData(1,new myGeoLocation(1,0,0)));
-        graph.addNode(new myNodeData(2,new myGeoLocation(2,0,0)));
-        graph.addNode(new myNodeData(3,new myGeoLocation(3,0,0)));
-        graph.connect(0,3,20);
-//        graph.removeNode(0);
-        Iterator<NodeData> iter = graph.nodeIter();
-        iter.next();
-        iter.remove();
-        //System.out.println(graph.getNode(0).getKey());
-        System.out.println(graph.getEdge(0,3).getSrc());
+//        myDirectedWeightedGraph graph = new myDirectedWeightedGraph();
+//        graph.addNode(new myNodeData(0, new myGeoLocation(0, 0, 0)));
+//        graph.addNode(new myNodeData(1, new myGeoLocation(1, 0, 0)));
+//        graph.connect(0,1,5);
+//        graph.connect(1,0,3);
+//        System.out.println(graph.getEdge(1,0));
+//        System.out.println(graph.);
     }
 
 

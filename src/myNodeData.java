@@ -1,11 +1,12 @@
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class myNodeData implements NodeData{
-    int key;
-    myGeoLocation n;
-    int tag;
-    String info;
+    private int key;
+    private myGeoLocation n;
+    private Color v = Color.blue;
+    private int t;
 
     public Map<Integer, EdgeData> EdgesIn; // key = node it's going to
     public Map<Integer,EdgeData> EdgesOut; // key = node it's came from
@@ -15,6 +16,7 @@ public class myNodeData implements NodeData{
         this.n = (myGeoLocation) n;
         EdgesIn = new HashMap<>();
         EdgesOut = new HashMap<>();
+        t = 0;
     }
 
     public myNodeData(NodeData n) {
@@ -61,12 +63,12 @@ public class myNodeData implements NodeData{
 
     @Override
     public int getTag() {
-        return 0;
+        return t;
     }
 
     @Override
     public void setTag(int t) {
-
+        this.t = t;
     }
 
     @Override
@@ -76,4 +78,5 @@ public class myNodeData implements NodeData{
                 ", n=" + n +
                 '}';
     }
+
 }

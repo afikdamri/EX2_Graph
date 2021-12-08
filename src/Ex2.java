@@ -1,4 +1,4 @@
-
+import java.util.Iterator;
 
 /**
  * This class is the main class for Ex2 - your implementation will be tested using this class.
@@ -11,20 +11,7 @@ public class Ex2 {
      * @return
      */
     public static DirectedWeightedGraph getGrapg(String json_file) {
-//        DirectedWeightedGraph ans = new myDirectedWeightedGraph();
-//        try {
-//            GsonBuilder builder = new GsonBuilder();
-//            builder.registerTypeAdapter(myDirectedWeightedGraph.class, new deserialize());
-//            Gson gson = builder.setPrettyPrinting().create();
-//
-//            Reader reader = Files.newBufferedReader(Paths.get(json_file));
-//            ans = gson.fromJson(reader, myDirectedWeightedGraph.class);
-//
-//            System.out.println(ans);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return ans;
+
     return null;}
     /**
      * This static function will be used to test your implementation
@@ -32,11 +19,9 @@ public class Ex2 {
      * @return
      */
     public static DirectedWeightedGraphAlgorithms getGrapgAlgo(String json_file) {
-        DirectedWeightedGraphAlgorithms ans = null;
-        // ****** Add your code here ******
-        //
-        // ********************************
-        return ans;
+        myDirectedWeightedGraphAlgorithms ans = new myDirectedWeightedGraphAlgorithms();
+        ans.load(json_file);
+        return (DirectedWeightedGraphAlgorithms) ans;
     }
     /**
      * This static function will run your GUI using the json fime.
@@ -50,9 +35,23 @@ public class Ex2 {
         // ********************************
     }
     public static void main(String[] args) {
-        getGrapg("data//G1.json");
-        String x = "100";
+        myDirectedWeightedGraph graph = new myDirectedWeightedGraph();
+        graph.addNode(new myNodeData(0, new myGeoLocation(0, 0, 0)));
+        graph.addNode(new myNodeData(1, new myGeoLocation(1, 0, 0)));
+        graph.addNode(new myNodeData(2, new myGeoLocation(2, 0, 0)));
+        graph.connect(0,1,5);
+        graph.connect(1,0,3);
+        graph.connect(1,2,3);
+        graph.removeEdge(0,1);
+        Iterator<EdgeData> iter = graph.edgeIter();
+        while (iter.hasNext()) {
+            System.out.println(iter.next());
+        }
+
+        DirectedWeightedGraphAlgorithms a =getGrapgAlgo("data//G1.json");
+        System.out.println(a.getGraph());
+        a.isConnected();
 
     }
+    }
 
-}
