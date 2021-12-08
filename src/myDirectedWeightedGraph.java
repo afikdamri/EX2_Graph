@@ -148,4 +148,154 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
                 ", edges=" + edges +
                 '}';
     }
+
+//    private class EdgeIterator implements Iterator<EdgeData> {
+//        private int myMC;
+//        private Iterator<EdgeData> iter;
+//        private EdgeData curr;
+//        public EdgeIterator() {
+//            myMC = Mc;
+//            iter = edges.values().iterator();
+//        }
+//
+//        private void isValide() {
+//            if (myMC != Mc) {
+//                throw new RuntimeException("the iterator has change!");
+//            }
+//        }
+//        @Override
+//        public boolean hasNext() {
+//            isValide();
+//            return iter.hasNext();
+//        }
+//        @Override
+//        public EdgeData next() {
+//            isValide();
+//            curr = iter.next();
+//            return curr;
+//        }
+//        @Override
+//        public void remove() {
+//            isValide();
+//            ++myMC;
+//            iter.remove();
+//            removeEdge(curr.getSrc(), curr.getDest());
+//        }
+//    }
+//    private class EdgeIteratorOfNode implements Iterator<EdgeData> {
+//        private int myMC;
+//        private Iterator<EdgeData> iter;
+//        private EdgeData curr;
+//        public EdgeIteratorOfNode(int node_id) {
+//            myMC = Mc;
+//            iter = edgesOfNode.get(node_id).fromMe.values().iterator();
+//        }
+//
+//        private void isValide() {
+//            if (myMC != Mc) {
+//                throw new RuntimeException("the iterator has change!");
+//            }
+//        }
+//        @Override
+//        public boolean hasNext() {
+//            isValide();
+//            return iter.hasNext();
+//        }
+//        @Override
+//        public EdgeData next() {
+//            isValide();
+//            curr = iter.next();
+//            return curr;
+//        }
+//        @Override
+//        public void remove() {
+//            isValide();
+//            ++myMC;
+//            iter.remove();
+//            removeEdge(curr.getSrc(), curr.getDest());
+//
+//        }
+//    }
+//
+//    private class NodeIterator implements Iterator<NodeData> {
+//        private int myMC;
+//        private Iterator<NodeData> iter;
+//        private NodeData curr;
+//        public NodeIterator() {
+//            myMC = Mc;
+//            iter = nodes.values().iterator();
+//        }
+//
+//        private void isValide() {
+//            if (myMC != Mc) {
+//                throw new RuntimeException("the iterator has change!");
+//            }
+//        }
+//        @Override
+//        public boolean hasNext() {
+//            isValide();
+//            return iter.hasNext();
+//        }
+//        @Override
+//        public NodeData next() {
+//            isValide();
+//            curr = iter.next();
+//            return curr;
+//        }
+//        @Override
+//        public void remove() {
+//            isValide();
+//            ++myMC;
+//            iter.remove();
+//            removeNode(curr.getKey());
+//        }
+//    }
+    public HashMap<Integer, NodeData> getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(HashMap<Integer, NodeData> nodes) {
+        this.nodes = nodes;
+    }
+
+    public HashMap<Vector<Integer>, EdgeData> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(HashMap<Vector<Integer>, EdgeData> edges) {
+        this.edges = edges;
+    }
+
+    public HashMap<Integer, frTo> getEdgesOfNode() {
+        return edgesOfNode;
+    }
+
+    public void setEdgesOfNode(HashMap<Integer, frTo> edgesOfNode) {
+        this.edgesOfNode = edgesOfNode;
+    }
+
+    public int getMc() {
+        return Mc;
+    }
+
+    public void setMc(int mc) {
+        Mc = mc;
+    }
+
+    public static void main(String[] args) {
+       myDirectedWeightedGraph graph = new myDirectedWeightedGraph();
+       graph.addNode(new myNodeData(0,new myGeoLocation(0,0,0)));
+        graph.addNode(new myNodeData(1,new myGeoLocation(1,0,0)));
+        graph.addNode(new myNodeData(2,new myGeoLocation(2,0,0)));
+        graph.addNode(new myNodeData(3,new myGeoLocation(3,0,0)));
+        graph.connect(0,3,20);
+//        graph.removeNode(0);
+        Iterator<NodeData> iter = graph.nodeIter();
+        iter.next();
+        iter.remove();
+        //System.out.println(graph.getNode(0).getKey());
+        System.out.println(graph.getEdge(0,3).getSrc());
+    }
+
+
 }

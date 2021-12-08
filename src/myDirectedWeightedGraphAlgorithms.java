@@ -1,11 +1,10 @@
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphAlgorithms{
@@ -59,29 +58,24 @@ public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphA
 
     @Override
     public boolean load(String file) {
-        JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("employees.json"))
-        {
-            //Read JSON file
-            Object obj = jsonParser.parse(reader);
+        try {
+            GsonBuilder builder = new GsonBuilder();
+            builder.registerTypeAdapter(myDirectedWeightedGraph.class, new deserialize());
+            Gson gson = builder.setPrettyPrinting().create();
 
-            JSONArray employeeList = (JSONArray) obj;
-            System.out.println(employeeList);
+            Reader reader = Files.newBufferedReader(Paths.get(file));
+            graph = gson.fromJson(reader, myDirectedWeightedGraph.class);
 
-            //Iterate over employee array
-            employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            System.out.println(graph);
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+            return false;
         }
 
         return true;
-}
+    }
+
 
     @Override
     public String toString() {
