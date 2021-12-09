@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 /**
  * This class is the main class for Ex2 - your implementation will be tested using this class.
@@ -78,27 +79,21 @@ public class Ex2 {
 
 
     public static void main(String[] args) {
-//        myDirectedWeightedGraph graph = new myDirectedWeightedGraph();
-//        graph.addNode(new myNodeData(0, new myGeoLocation(0, 0, 0)));
-//        graph.addNode(new myNodeData(1, new myGeoLocation(1, 0, 0)));
-//        graph.addNode(new myNodeData(2, new myGeoLocation(2, 0, 0)));
-//        graph.connect(0,1,5);
-//        graph.connect(1,0,3);
-//        graph.connect(1,2,3);
-//        graph.removeEdge(0,1);
-//        Iterator<EdgeData> iter = graph.edgeIter();
-//        while (iter.hasNext()) {
-//            System.out.println(iter.next());
-//        }
+        DirectedWeightedGraph b = getGrapg("data//G3.json");
+        myDirectedWeightedGraphAlgorithms algograph;
+        algograph = new myDirectedWeightedGraphAlgorithms();
+        algograph.init(b);
 
-        DirectedWeightedGraphAlgorithms a =getGrapgAlgo("data//G1.json");
-        System.out.println(a);
-        System.out.println(a.isConnected());
-//        DirectedWeightedGraphAlgorithms b = new myDirectedWeightedGraphAlgorithms();
-//        b.init(a);
-//
-//        System.out.println(a.nodeSize());
-//        a.isConnected();
+        ArrayList<NodeData>y = new ArrayList<NodeData>();
+
+        for (int i = 0; i <b.nodeSize() ; i++) {
+            y.add(b.getNode(i));
+        }
+        System.out.println(algograph.isConnected());
+        System.out.println(algograph.shortestPathDist(1,7));
+        System.out.println(algograph.shortestPath(1,7));
+        System.out.println(algograph.center());
+        System.out.println(algograph.tsp(y));
 
     }
     }

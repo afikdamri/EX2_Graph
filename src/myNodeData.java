@@ -1,11 +1,9 @@
-import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class myNodeData implements NodeData{
     private int key;
     private myGeoLocation n;
-    private Color v = Color.blue;
     private int t;
 
     public Map<Integer, EdgeData> EdgesIn; // key = node it's going to
@@ -80,11 +78,4 @@ public class myNodeData implements NodeData{
                 '}';
     }
 
-    public Color getV() {
-        return v;
-    }
-
-    public void setV(Color v) {
-        this.v = v;
-    }
 }
