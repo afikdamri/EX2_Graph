@@ -11,9 +11,9 @@ public class myNodeData implements NodeData{
     public Map<Integer, EdgeData> EdgesIn; // key = node it's going to
     public Map<Integer,EdgeData> EdgesOut; // key = node it's came from
 
-    public myNodeData(int key, GeoLocation n) {
+    public myNodeData(int key, String n) {
         this.key = key;
-        this.n = (myGeoLocation) n;
+        this.n =  new myGeoLocation(n);
         EdgesIn = new HashMap<>();
         EdgesOut = new HashMap<>();
         t = 0;
@@ -23,6 +23,7 @@ public class myNodeData implements NodeData{
         this.key = n.getKey();
         this.n =new myGeoLocation(n.getLocation().x(),n.getLocation().y(),n.getLocation().z());
     }
+
 
 
     @Override
@@ -79,4 +80,11 @@ public class myNodeData implements NodeData{
                 '}';
     }
 
+    public Color getV() {
+        return v;
+    }
+
+    public void setV(Color v) {
+        this.v = v;
+    }
 }

@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class myGeoLocation implements GeoLocation {
     double x;
@@ -12,11 +12,34 @@ public class myGeoLocation implements GeoLocation {
     }
 
     public myGeoLocation(String p) {
-        Scanner sr = new Scanner(p);
-        sr.useDelimiter(",");
-        this.x = Double.parseDouble(sr.next());
-        this.y = Double.parseDouble(sr.next());
-        this.z = Double.parseDouble(sr.next());
+        String[] arrOfStr = p.split(",");
+        this.x = Double.parseDouble(arrOfStr[0]);
+        this.y = Double.parseDouble(arrOfStr[1]);
+        this.z = Double.parseDouble(arrOfStr[2]);
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getZ() {
+        return z;
+    }
+
+    public void setZ(double z) {
+        this.z = z;
     }
 
     @Override
