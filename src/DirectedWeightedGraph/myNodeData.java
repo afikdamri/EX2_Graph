@@ -1,3 +1,5 @@
+package DirectedWeightedGraph;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -72,7 +74,7 @@ public class myNodeData implements NodeData{
 
     @Override
     public String toString() {
-        return "myNodeData{" +
+        return "DirectedWeightedGraph.myNodeData{" +
                 "key=" + key +
                 ", n=" + n +
                 '}';

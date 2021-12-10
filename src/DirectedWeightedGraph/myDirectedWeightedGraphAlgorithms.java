@@ -1,3 +1,5 @@
+package DirectedWeightedGraph;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -118,7 +120,7 @@ public class myDirectedWeightedGraphAlgorithms implements DirectedWeightedGraphA
 
     @Override
     public String toString() {
-        return "myDirectedWeightedGraphAlgorithms{" +
+        return "DirectedWeightedGraph.myDirectedWeightedGraphAlgorithms{" +
                 "graph=" + graph +
                 '}';
     }

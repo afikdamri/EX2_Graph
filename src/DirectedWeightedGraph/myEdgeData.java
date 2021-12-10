@@ -1,3 +1,5 @@
+package DirectedWeightedGraph;
+
 public class myEdgeData implements EdgeData{
     int src;
     int dest;
@@ -54,7 +56,7 @@ public class myEdgeData implements EdgeData{
 
     @Override
     public String toString() {
-        return "myEdgeData{" +
+        return "DirectedWeightedGraph.myEdgeData{" +
                 "src=" + src +
                 ", dest=" + dest +
                 ", w=" + w +

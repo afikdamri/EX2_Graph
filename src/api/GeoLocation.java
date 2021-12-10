@@ -1,3 +1,5 @@
+package DirectedWeightedGraph;
+
 /**
  * This interface represents a geo location <x,y,z>, (aka Point3D data).
  *

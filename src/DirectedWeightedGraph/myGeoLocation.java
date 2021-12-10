@@ -1,4 +1,4 @@
-
+package DirectedWeightedGraph;
 
 public class myGeoLocation implements GeoLocation {
     double x;
@@ -64,7 +64,7 @@ public class myGeoLocation implements GeoLocation {
 
     @Override
     public String toString() {
-        return "myGeoLocation{" +
+        return "DirectedWeightedGraph.myGeoLocation{" +
                 "x=" + x +
                 ", y=" + y +
                 ", z=" + z +

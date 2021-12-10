@@ -1,3 +1,5 @@
+package DirectedWeightedGraph;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
@@ -135,7 +137,7 @@ public class myDirectedWeightedGraph implements DirectedWeightedGraph {
 
     @Override
     public String toString() {
-        return "myDirectedWeightedGraph{" +
+        return "DirectedWeightedGraph.myDirectedWeightedGraph{" +
                 "nodes=" + nodes +
                 ", edges=" + edges +
                 '}';

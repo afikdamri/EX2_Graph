@@ -1,3 +1,5 @@
+package DirectedWeightedGraph;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -7,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * This class is the main class for Ex2 - your implementation will be tested using this class.
+ * This class is the main class for DirectedWeightedGraph.Ex2 - your implementation will be tested using this class.
  */
 public class Ex2 {
 
