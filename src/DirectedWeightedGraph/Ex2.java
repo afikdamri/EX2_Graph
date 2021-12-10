@@ -2,10 +2,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -52,34 +50,39 @@ public class Ex2 {
     }
 
     public static myDirectedWeightedGraph readGRaphFromJson(String json_file)
-            throws FileNotFoundException, IOException, ParseException, org.json.simple.parser.ParseException {
-        myDirectedWeightedGraph ans = new myDirectedWeightedGraph();
-        JSONParser parser = new JSONParser();
-        Object obj = parser.parse(new FileReader(json_file));
-        JSONObject jobj = (JSONObject) obj;
-        JSONArray edges = (JSONArray) jobj.get("Edges");
-        JSONArray nodes = (JSONArray) jobj.get("Nodes");
-        for (Object o : nodes) {
-            JSONObject temp = (JSONObject) o;
+            throws IOException, org.json.simple.parser.ParseException {
+
+        myDirectedWeightedGraph pick = new myDirectedWeightedGraph();
+        JSONParser take = new JSONParser();
+
+        var obj = take.parse(new FileReader(json_file));
+        var jobj = (JSONObject) obj;
+        var edges = (JSONArray) jobj.get("Edges");
+        var nodes = (JSONArray) jobj.get("Nodes");
+        for (int i = 0, nodesSize = nodes.size(); i < nodesSize; i++) {
+            Object o = nodes.get(i);
+            var temp = (JSONObject) o;
             NodeData n = new myNodeData(Integer.parseInt(temp.get("id").toString()), temp.get("pos").toString());
-            ans.addNode(n);
+            pick.addNode(n);
         }
-        for (Object o : edges) {
-            JSONObject temp = (JSONObject) o;
-            if ((temp.get("src") != null) && temp.get("dest") != null && temp.get("w") != null) {
-                int src = Integer.parseInt(temp.get("src").toString());
-                int dest = Integer.parseInt(temp.get("dest").toString());
-                double w = Double.parseDouble(temp.get("w").toString());
-                ans.connect(src, dest, w);
+        for (int i = 0, edgesSize = edges.size(); i < edgesSize; i++) {
+            var o = edges.get(i);
+            var temp = (JSONObject) o;
+            if ((temp.get("src") == null) || temp.get("dest") == null || temp.get("w") == null) {
+                continue;
             }
+            int src = Integer.parseInt(temp.get("src").toString());
+            int dest = Integer.parseInt(temp.get("dest").toString());
+            double w = Double.parseDouble(temp.get("w").toString());
+            pick.connect(src, dest, w);
         }
-        return ans;
+        return pick;
     }
 
 
 
     public static void main(String[] args) {
-        DirectedWeightedGraph b = getGrapg("data//G3.json");
+        DirectedWeightedGraph b = getGrapg("data//G2.json");
         myDirectedWeightedGraphAlgorithms algograph;
         algograph = new myDirectedWeightedGraphAlgorithms();
         algograph.init(b);
