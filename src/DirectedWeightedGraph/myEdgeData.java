@@ -1,6 +1,8 @@
 package DirectedWeightedGraph;
 
-public class myEdgeData implements EdgeData{
+import api.EdgeData;
+
+public class myEdgeData implements EdgeData {
     int src;
     int dest;
     double w;

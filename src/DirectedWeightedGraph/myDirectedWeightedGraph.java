@@ -1,5 +1,9 @@
 package DirectedWeightedGraph;
 
+import api.DirectedWeightedGraph;
+import api.EdgeData;
+import api.NodeData;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;

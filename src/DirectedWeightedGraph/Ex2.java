@@ -1,5 +1,8 @@
 package DirectedWeightedGraph;
 
+import api.DirectedWeightedGraph;
+import api.DirectedWeightedGraphAlgorithms;
+import api.NodeData;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -89,16 +92,46 @@ public class Ex2 {
         algograph = new myDirectedWeightedGraphAlgorithms();
         algograph.init(b);
 
-        ArrayList<NodeData>y = new ArrayList<NodeData>();
+        ArrayList<NodeData> y = new ArrayList<NodeData>();
 
         for (int i = 0; i <b.nodeSize() ; i++) {
             y.add(b.getNode(i));
         }
+
         System.out.println(algograph.isConnected());
         System.out.println(algograph.shortestPathDist(1,7));
         System.out.println(algograph.shortestPath(1,7));
         System.out.println(algograph.center());
         System.out.println(algograph.tsp(y));
+
+//        DirectedWeightedGraph n = new myDirectedWeightedGraph();
+//        NodeData a = new myNodeData(1,"1,2,0");
+//        NodeData b = new myNodeData(2,"5,3,0");
+//        NodeData c = new myNodeData(3,"8,4,0");
+//
+//        n.addNode(a);
+//        n.addNode(b);
+//        n.addNode(c);
+//        n.connect(1,2,3.55);
+//        for (int i = 0; i < n.edgeSize() ; i++) {
+//            System.out.println(n.edgeIter().next());
+//        }
+//        for (int i = 0; i <n.nodeSize() ; i++) {
+//            System.out.println(n.nodeIter().next());
+//        }
+//        System.out.println("");
+//        n.removeEdge(1,2);
+//        n.removeNode(3);
+//
+//
+//        for (int i = 0; i < n.edgeSize() ; i++) {
+//            System.out.println(n.edgeIter().next());
+//        }
+//        for (int i = 0; i <n.nodeSize() ; i++) {
+//            System.out.println(n.nodeIter().next());
+//        }
+
+
 
     }
     }

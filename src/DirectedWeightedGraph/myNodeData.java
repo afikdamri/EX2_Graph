@@ -1,5 +1,9 @@
 package DirectedWeightedGraph;
 
+import api.EdgeData;
+import api.GeoLocation;
+import api.NodeData;
+
 import java.util.HashMap;
 import java.util.Map;
 

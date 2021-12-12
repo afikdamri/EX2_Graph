@@ -1,5 +1,7 @@
 package DirectedWeightedGraph;
 
+import api.GeoLocation;
+
 public class myGeoLocation implements GeoLocation {
     double x;
     double y;

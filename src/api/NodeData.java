@@ -1,6 +1,4 @@
-package DirectedWeightedGraph;
-
-import api.GeoLocation;
+package api;
 
 /**
  * This interface represents the set of operations applicable on a 
