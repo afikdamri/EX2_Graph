@@ -12,5 +12,7 @@ A. Graph construction.
 
 B. The algorithms that can be run on the graph.
 
-@ The way the project is structured
+# The way the project is structured
+We can see the way the project is built and works:
+
 
