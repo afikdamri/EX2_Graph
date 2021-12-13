@@ -25,3 +25,24 @@ The graph is created and works according to the following slide:
 
 The graph is created by edgs and nodes as you can see in the slide and you can add or subtract sides and vertices and run new graphs as you wish.
 
+# DirectedWeightedGraphAlgorithm
+The algorithm class is a class where certain algorithms can be run on the graph.
+We will now explain each of the existing functions in the class:
+
+*init - 
+
+*isConnected -
+
+*shortestPathDist -
+
+*shortestPath -
+
+*center -
+
+*dijkstra - 
+
+*tsp -
+
+*load - 
+
+*save -
