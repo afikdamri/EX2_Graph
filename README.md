@@ -12,7 +12,7 @@ A. Graph construction.
 
 B. The algorithms that can be run on the graph.
 
-# The way the project is structured
-We can see the way the project is built and works:
+# Project idea
+The idea of ​​the project is basically to create a directed graph as we wish and the possibility to look at the algorithms that can be run on directed graphs.
 
 
