@@ -65,7 +65,8 @@ We will now explain each of the existing functions in the class:
 #  Gui
 
 #  Algorithms Results
-![image](https://user-images.githubusercontent.com/93542763/145786859-d163148c-8d02-458d-b4c6-bc2b8b56dd75.png)
+![image](https://user-images.githubusercontent.com/93542763/145813558-599b6120-31dd-4a0c-b8f5-4194bf5c288a.png)
+
 
 #  How to run the project
 
