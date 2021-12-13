@@ -62,4 +62,10 @@ We will now explain each of the existing functions in the class:
 
 *tsp* - will find the best way to do circle on group of nodes in the graph.
 
+# Gui
+
+# Algorithms Results
+![image](https://user-images.githubusercontent.com/93542763/145786859-d163148c-8d02-458d-b4c6-bc2b8b56dd75.png)
+
+# How to run the project
 
