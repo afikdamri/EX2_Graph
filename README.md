@@ -75,8 +75,6 @@ The class takes all the algorithms and functions and displays them on the screen
 
 *Example Load* - data/loadname.json
 
-
-
 #  Algorithms Results
 ![image](https://user-images.githubusercontent.com/93542763/145813558-599b6120-31dd-4a0c-b8f5-4194bf5c288a.png)
 
