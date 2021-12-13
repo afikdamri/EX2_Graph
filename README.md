@@ -31,18 +31,18 @@ We will now explain each of the existing functions in the class:
 
 *init* - 
 
-*isConnected -
+*isConnected* -
 
-*shortestPathDist -
+*shortestPathDist*-
 
-*shortestPath -
+*shortestPath* -
 
-*center -
+*center* -
 
-*dijkstra - 
+*dijkstra* - 
 
-*tsp -
+*tsp* -
 
-*load - 
+*load* - 
 
-*save -
+*save* -
