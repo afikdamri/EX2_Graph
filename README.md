@@ -63,6 +63,11 @@ We will now explain each of the existing functions in the class:
 *tsp* - will find the best way to do circle on group of nodes in the graph.
 
 #  Gui
+The class takes all the algorithms and functions and displays them on the screen:
+
+*MyJframe* - The department is responsible for all the calculations performed behind the screen and finally paints what is seen on the screen with the help of the functions and algorithm it receives.
+
+*MyJpanel* - This class is basically the display screen that is seen on the screen in which we get all the functions and all the display options we have and with its help we define all the functional options that we have.
 
 #  Algorithms Results
 ![image](https://user-images.githubusercontent.com/93542763/145813558-599b6120-31dd-4a0c-b8f5-4194bf5c288a.png)
