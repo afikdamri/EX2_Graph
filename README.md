@@ -69,6 +69,14 @@ The class takes all the algorithms and functions and displays them on the screen
 
 *MyJpanel* - This class is basically the display screen that is seen on the screen in which we get all the functions and all the display options we have and with its help we define all the functional options that we have.
 
+![צילום מסך 2021-12-13 171740](https://user-images.githubusercontent.com/93768578/145842317-d97561ab-aa7e-44c2-a285-4a28e6865592.png)
+
+*Example Save* - data/newname.json 
+
+*Example Load* - data/loadname.json
+
+
+
 #  Algorithms Results
 ![image](https://user-images.githubusercontent.com/93542763/145813558-599b6120-31dd-4a0c-b8f5-4194bf5c288a.png)
 
