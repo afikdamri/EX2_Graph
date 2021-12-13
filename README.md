@@ -29,7 +29,7 @@ The graph is created by edgs and nodes as you can see in the slide and you can a
 The algorithm class is a class where certain algorithms can be run on the graph.
 We will now explain each of the existing functions in the class:
 
-*init - 
+*init* - 
 
 *isConnected -
 
