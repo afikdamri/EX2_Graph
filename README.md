@@ -26,19 +26,19 @@ The graph is created and works according to the following slide:
 The graph is created by edgs and nodes as you can see in the slide and you can add or subtract sides and vertices and run new graphs as you wish.
 
 # classes
-MyGeoLocation - this class saved The Location of the node.
+*MyGeoLocation* - this class saved The Location of the node.
 
-MyNodeData - this class save information about each node:
+*MyNodeData* - this class save information about each node:
 its exclusive id.
 MyGeoLocation information.
 HashMap for all the edges from this node to another.
 HashMap for all the edges that getting to this node.
 
-MyEdgeData - contains to every edge The id source, id detention and the wight of the edge.
+*MyEdgeData* - contains to every edge The id source, id detention and the wight of the edge.
 
-MyDirectedGraph - contains List of the nodes in the graph(MyNodeData) and all the edges(MyEdgeDate).
+*MyDirectedGraph* - contains List of the nodes in the graph(MyNodeData) and all the edges(MyEdgeDate).
 
-MyDirectedGraphAlgorithm - this class get MyDirectedGraph and can calculate the next list of algorithms:
+*MyDirectedGraphAlgorithm* - this class get MyDirectedGraph and can calculate the next list of algorithms:
 If the graph is connected.
 A shorted path between 2 nodes.
 The ideal center of the graph.
